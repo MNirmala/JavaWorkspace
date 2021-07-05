@@ -5,8 +5,7 @@ import java.util.*;
 import com.firstwebappln.firstwebappln.model.*;
 
 @Repository
-public interface EmployeeRepository  extends JpaRepository<Employee, Integer>{
+public interface EmployeeRepository  extends JpaRepository<Employee, Long>{
 
-    List<Employee>findAll();
 
 }
