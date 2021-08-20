@@ -4997,3 +4997,4 @@ java.io.IOException: Creating directories for C:\Program Files\Java\jdk-11.0.11\
 2021-08-19 20:16:58,151 [Worker-142: Launching firstRestAPI - FirstRestApiApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2021-08-19 20:16:58,153 [Worker-142: Launching firstRestAPI - FirstRestApiApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-08-19 20:16:58,153 [Worker-142: Launching firstRestAPI - FirstRestApiApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-08-19 20:16:58,153 [Worker-142: Launching firstRestAPI - FirstRestApiApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\GitWorkspace\JavaWorkspace\JavaWorkspace\firstRestAPI\src\test\resources
