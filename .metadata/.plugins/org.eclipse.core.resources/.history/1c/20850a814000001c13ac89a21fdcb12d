@@ -1,0 +1,37 @@
+package net;
+import java.util.Date;
+
+import net.javaNM.CalendarAPI.controller.calendarController;
+import net.javaNM.CalendarAPI.model.*;
+import net.javaNM.CalendarAPI.service.*;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.time.LocalDate;
+import java.util.Optional;
+public class SchedulerDaoTest {
+	@Test
+	public void whenPersistCreditCard_thenIdAssigned() {
+		//String name, String status, Date startDate, Date endDate
+		project proj = project.newInstance("TQC","08/18/2020","08/18/2024");
+		CreditCard creditCard = CreditCard.newInstance("123-456", LocalDate.now(), account);
+
+		proj.persist(account);
+		creditCardDao.persist(creditCard);
+		Assert.assertNotNull(creditCard.getId());
+		
+		private EntityManagerFactory emf;
+	    private Dao<project> projectDao;
+	    private Dao<projectPhase> projPhaseDao;
+	    private Dao<user> userDao;
+	    private Dao<calendarScheduler> scheduleDao;
+
+	    public CreditCardDaoTest() {
+	        this.emf = Persistence.createEntityManagerFactory("unidirectionalManyToOne");
+	        projectDao = new projectDao(emf);
+	        accountDao = new AccountDao(emf);
+	}
+}

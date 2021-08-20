@@ -1,0 +1,32 @@
+package net.javaNM.CalendarAPI.model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ProjectPhase")
+public class projectPhase {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projectPhase_Sequence")
+	@SequenceGenerator(name = "projectPhase_Sequence", sequenceName = "PROJECTPHASE_SEQ")
+	public Long id;
+	@JoinColumn(name = "Id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	public project Project;
+	@Column(name = "ProjectPhase")
+	public String projectPhase;
+	@Column(name = "StartDate")
+	public Date startDate;
+	@Column(name = "EndDate")
+	public Date endDate;
+}

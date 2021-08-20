@@ -1,0 +1,43 @@
+package net.javaNM.CalendarAPI.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Entity
+@Table(name = "ProjectPhase")
+public class projectPhase {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projectPhase_Sequence")
+	@SequenceGenerator(name = "projectPhase_Sequence", sequenceName = "PROJECTPHASE_SEQ")
+	public Long id;
+	
+	  @JoinColumn(name = "Projects", referencedColumnName = "Id", nullable = false)
+	  
+	  @ManyToOne(fetch = FetchType.LAZY) public project Project;
+	 
+	@Column(name = "Status")
+	public String status;
+	@Column(name = "StartDate")
+	public Date startDate;
+	@Column(name = "EndDate")
+	public Date endDate;
+	@Autowired
+	//@OneToMany(mappedBy ="ProjectPhase",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	public List<calendarScheduler>calendarSchedule = new ArrayList<calendarScheduler>();
+}
