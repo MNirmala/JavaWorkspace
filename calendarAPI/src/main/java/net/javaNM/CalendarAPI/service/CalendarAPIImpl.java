@@ -13,9 +13,11 @@ public class CalendarAPIImpl implements CalendarAPIService {
 	private CalendarAPIRepository calendarAPIRepository;
 
 	@Override
-	public List<calendarScheduler> listAllProjectsAndUsers() {
+	public List<calendarScheduler> listScheduleByPhaseAndUsers() {
 		// TODO Auto-generated method stub
 		return calendarAPIRepository.findAll();
 	}
+	
+	
 
 }

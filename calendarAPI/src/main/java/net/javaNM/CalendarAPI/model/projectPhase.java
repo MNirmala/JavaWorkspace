@@ -22,28 +22,37 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ProjectPhase")
-public class projectPhase {
+public class projectPhase extends AuditModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projectPhase_Sequence")
 	@SequenceGenerator(name = "projectPhase_Sequence", sequenceName = "PROJECTPHASE_SEQ")
-	public Long id;
+	private Long id;
 	
-	  @JoinColumn(name = "Project_Id", referencedColumnName = "Id", nullable = false)
+	@JoinColumn(name = "Project_Id", referencedColumnName = "Id", nullable = false)
 	  
-	  @ManyToOne(fetch = FetchType.LAZY, optional = false) 
-	  public project Project;
-	 public project getProject() {return Project;}
+	@ManyToOne(cascade = CascadeType.ALL) 
+	private project Project;
+	 
 	@Column(name = "Status")
-	public String status;
+	private String status;
 	@Column(name = "StartDate")
-	public Date startDate;
+	private Date startDate;
 	@Column(name = "EndDate")
-	public Date endDate;
-	//@OneToMany(mappedBy ="ProjectPhase", cascade = CascadeType.ALL,fetch = FetchType.LAZY)	
-	//private Set<calendarScheduler> schedules;
+	private Date endDate;
+
 	
-	//public Set<calendarScheduler> getSchedule() { return schedules; }
+	public void setProject(project Project) {this.Project=Project;}
+	public void setStatus(String status) {this.status= status;}
+	public void setStartDate(Date startDate) {this.startDate= startDate;}
+	public void setEndDate(Date endDate) {this.endDate= endDate;}
 	
+	public Long getId() {return id;}
+	public project getProject() {return Project;}
+	public String getStatus() {return status;}
+	public Date getStartDate() {return startDate;}
+	public Date getEndDate() {return endDate;}
+	
+	public projectPhase() {}
 	public projectPhase(project Project, String status, Date startDate, Date endDate) {
 		this.Project=Project;
 		this.status=status;
@@ -51,4 +60,6 @@ public class projectPhase {
 		this.endDate=endDate;
 		
 	}
+	
+	
 }

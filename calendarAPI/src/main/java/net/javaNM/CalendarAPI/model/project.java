@@ -20,23 +20,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "Projects")
-public class project {
+public class project extends AuditModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_Sequence")
 	@SequenceGenerator(name = "project_Sequence", sequenceName = "PROJECT_SEQ")
-	public Long id;
+	private Long id;
 	@Column(name = "Project_Name")
-	public String projectName;
+	private String projectName;
 	@Column(name = "Status")
-	public String status;
+	private String status;
 	@Column(name = "StartDate")
-	public Date startDate;
+	private Date startDate;
 	@Column(name = "EndDate")
-	public Date endDate;
-	//@OneToMany(mappedBy ="Projects", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	//private Set<projectPhase> phases;
-		
-	//public Set<projectPhase> getProjectPhase() { return phases; }
+	private Date endDate;
+	
+	public void setName(String projname) {this.projectName=projname;}
+	public void setStatus(String status) {this.status= status;}
+	public void  setStartDate(Date startDate) {this.startDate= startDate;}
+	public void  setEndDate(Date endDate) {this.endDate= endDate;}
+	
+	public Long getId() {return id;}
+	public String getProjectName() {return projectName;}
+	public String getStatus() {return status;}
+	public Date getStartDate() {return startDate;}
+	public Date getEndDate() {return endDate;}
+
 	
 	public project() {
 	}

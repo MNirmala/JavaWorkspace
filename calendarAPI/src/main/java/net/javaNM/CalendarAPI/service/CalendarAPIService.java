@@ -6,6 +6,8 @@ import net.javaNM.CalendarAPI.model.*;
 
 public interface CalendarAPIService {
 
-	List<calendarScheduler> listAllProjectsAndUsers();
+	List<calendarScheduler> listScheduleByPhaseAndUsers();
+	
+	
 
 }

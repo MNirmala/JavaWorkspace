@@ -1,6 +1,8 @@
 package net.javaNM.CalendarAPI.model;
 
 import java.util.*;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,27 +18,36 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CalendarScheduler")
-public class calendarScheduler {
+public class calendarScheduler extends AuditModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calendarScheduler_Sequence")
 	@SequenceGenerator(name = "calendarScheduler_Sequence", sequenceName = "CALENDARSCHEDULER_SEQ")
-	public Long id;
+	private Long id;
 	
 	  @JoinColumn(name = "ProjectPhase_Id", referencedColumnName = "Id", nullable =
 	  false)	  
-	  @ManyToOne(fetch = FetchType.LAZY, optional = false) 
-	  public projectPhase ProjectPhase;
+	  @ManyToOne(cascade = CascadeType.ALL) 
+	  private projectPhase ProjectPhase;
 	  
 	  @JoinColumn(name = "User_Id", referencedColumnName = "Id", nullable = false)	  
-	  @ManyToOne(fetch = FetchType.LAZY, optional = false) 
-	  public user User;
-	 
+	  @ManyToOne( cascade = CascadeType.ALL) 
+	  private user User;
+ 	@Column(name = "StartDate")
+	private Date startDate;
+	@Column(name = "EndDate")
+	private Date endDate;
+	
+	public void setUser(user User) {this.User=User;}
+	public void setProjectPhase(projectPhase ProjectPhase) {this.ProjectPhase= ProjectPhase;}
+	public void  setStartDate(Date startDate) {this.startDate= startDate;}
+	public void  setEndDate(Date endDate) {this.endDate= endDate;}
+	
+	public Long getId() {return id;}
 	public user getUser() {return User;}
 	public projectPhase getProjectPhase() {return ProjectPhase;}
-	@Column(name = "StartDate")
-	public Date startDate;
-	@Column(name = "EndDate")
-	public Date endDate;
+	public Date getStartDate() {return startDate;}
+	public Date getEndDate() {return endDate;}
+	public calendarScheduler() {}
 	
 	public calendarScheduler(projectPhase Project, user User, Date startDate, Date endDate) {
 		this.ProjectPhase=Project;
@@ -45,4 +56,9 @@ public class calendarScheduler {
 		this.endDate=endDate;
 		
 	}
+	
+	@Override
+    public String toString() {
+        return "calendarScheduler [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+    }
 }
